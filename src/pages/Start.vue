@@ -6,6 +6,9 @@
     <div class="options-footer">
       <van-button round type="info" block class="options-footer-button" @click="submit()">提交</van-button>
     </div>
+    <van-dialog v-model="show"  show-cancel-button>
+      fantasy
+    </van-dialog>
   </div>
 </template>
 
@@ -18,7 +21,8 @@ export default {
   },
   data () {
     return {
-      optionList: []
+      optionList: [],
+      show: false
     }
   },
   computed: {},
@@ -48,14 +52,15 @@ export default {
   methods: {
     submit () {
       console.log(this.optionList)
-      this.$dialog.confirm({
-        title: 'fantasy',
-        message: 'zhangliang'
-      }).then(() => {
-        console.log('fantasy')
-      }).catch(() => {
-        console.log('取消')
-      })
+      this.show = true
+    //   this.$dialog.confirm({
+    //     title: 'fantasy',
+    //     message: 'zhangliang',
+    //   }).then(() => {
+    //     console.log('fantasy')
+    //   }).catch(() => {
+    //     console.log('取消')
+    //   })
     }
   }
 }
@@ -63,6 +68,10 @@ export default {
 
 <style scoped lang="stylus">
   @import '../assets/styles/mixin.styl'
+  .options >>> .van-dialog
+    border-radius: 0
+    width pxToRem(552px)
+    height pxToRem(359)
   .options
     width: 100%
     height 100%
