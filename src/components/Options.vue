@@ -1,9 +1,9 @@
 <template>
-    <div class="options">
+    <div class="options clearfix">
       <form>
         <div v-for="(item, index) in list" :key="index" class="options-item">
           <label>{{item.label}}：</label>
-          <div class="options-input clearfix">
+          <div class="options-input">
             <van-radio-group v-model="item.value" direction="horizontal" v-if="item.mark == '0'">
               <van-radio name="1" checked-color="#00CC99">是</van-radio>
               <van-radio name="2" checked-color="#00CC99">否</van-radio>
@@ -38,7 +38,7 @@ export default {
 <style scoped lang="stylus">
   @import '../assets/styles/mixin.styl'
   .options
-    height: pxToRem(29px);
+    background rgba(255,255,255,1)
     font-size: pxToRem(30px);
     font-family:PingFang SC;
     font-weight: 400;

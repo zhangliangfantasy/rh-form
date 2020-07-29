@@ -1,32 +1,33 @@
 <template>
   <div class="options">
-    <div class="options-list">
-      <options :list="optionList"></options>
-    </div>
-    <div class="options-footer">
-      <van-button round type="info" block class="options-footer-button" @click="submit()">提交</van-button>
-    </div>
-    <van-dialog v-model="show"  show-cancel-button>
-      fantasy
-    </van-dialog>
+    <Options :list="optionList"></Options>
+    <!--提交bar-->
+    <Submit-bar @_submit="submit()"></Submit-bar>
+    <!--弹框组件-->
+    <Dialog ref="log" :message="message" @_cancel="cancel()" @_confirm="confirm()"></Dialog>
   </div>
 </template>
 
 <script>
 import Options from '@/components/Options'
+import Dialog from '@/components/Dialog'
+import SubmitBar from '@/components/SubmitBar'
 export default {
   name: 'Start',
   components: {
-    Options
+    Options,
+    Dialog,
+    SubmitBar
   },
   data () {
     return {
       optionList: [],
-      show: false
+      message: '提交后，访视不可再修改'
     }
   },
   computed: {},
   mounted () {
+    // mark的作用是判断单选框后面是“是/否”还是“有无”
     this.optionList = [
       { mark: '0', label: '患者姓名、性别、年龄正确' },
       { mark: '0', label: '手术方式确认' },
@@ -45,22 +46,23 @@ export default {
       { mark: '1', label: '体内植入物' },
       { mark: '1', label: '影像学资料' }
     ]
+    // 设置value的作用是保存用户选择状态值
     for (let i = 0; i < this.optionList.length; i++) {
       this.$set(this.optionList[i], 'value')
     }
   },
   methods: {
+    // 提交
     submit () {
-      console.log(this.optionList)
-      this.show = true
-    //   this.$dialog.confirm({
-    //     title: 'fantasy',
-    //     message: 'zhangliang',
-    //   }).then(() => {
-    //     console.log('fantasy')
-    //   }).catch(() => {
-    //     console.log('取消')
-    //   })
+      this.$refs.log.openDialog()
+    },
+    // 关闭下拉框
+    cancel () {
+      console.log('取消')
+    },
+    // 确认提交
+    confirm () {
+      console.log('确认提交')
     }
   }
 }
@@ -68,30 +70,7 @@ export default {
 
 <style scoped lang="stylus">
   @import '../assets/styles/mixin.styl'
-  .options >>> .van-dialog
-    border-radius: 0
-    width pxToRem(552px)
-    height pxToRem(359)
   .options
     width: 100%
     height 100%
-  .options-list
-    background rgba(255,255,255,1)
-  .options-footer
-    width 100%
-    height pxToRem(98px)
-    position fixed
-    bottom pxToRem(0px)
-    background rgba(255,255,255,1)
-    box-shadow 0px -1px pxToRem(18px) 0px rgba(117,132,137,0.53);
-    display flex
-    justify-content center
-    align-items center
-    .options-footer-button
-      font-size pxToRem(32px)
-      font-family PingFang SC;
-      font-weight 500
-      background rgba(28,101,115,1);
-      width pxToRem(320px)
-      height pxToRem(72px)
 </style>
