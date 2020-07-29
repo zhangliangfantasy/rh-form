@@ -3,7 +3,7 @@
     <form>
       <div v-for="(item, index) in list" :key="index">
         <label>{{item.label}}：</label>
-        <van-checkbox-group v-model="result">
+        <van-checkbox-group v-model="item.value">
           <div v-for="(_item, _index) in item._list" :key="_index">
             <van-checkbox :name="_item.value">{{_item.lab}}</van-checkbox>
           </div>
@@ -20,9 +20,7 @@ export default {
     list: Array
   },
   data () {
-    return {
-      result: []
-    }
+    return {}
   },
   computed: {},
   mounted () {},

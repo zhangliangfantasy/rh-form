@@ -39,10 +39,7 @@ export default {
   data () {
     return {
       optionList: [],
-      checkboxList: [
-        { label: '手术医师陈述', _list: [{lab: '预计手术时间', value: 'a'}, {lab: '预计失血量', value: 'b'}, {lab: '手术关键点', value: 'c'}, {lab: '其它', value: 'd'}] },
-        { label: '手术医师陈述', _list: [{lab: '预计手术时间', value: 'a'}, {lab: '预计失血量', value: 'b'}, {lab: '手术关键点', value: 'c'}, {lab: '其它', value: 'd'}] }
-      ],
+      checkboxList: [],
       result: [],
       message: '提交后，访视不可再修改'
     }
@@ -58,6 +55,14 @@ export default {
     // 设置value的作用是保存用户选择状态值
     for (let i = 0; i < this.optionList.length; i++) {
       this.$set(this.optionList[i], 'value')
+    }
+    this.checkboxList = [
+      { label: '手术医师陈述', _list: [{lab: '预计手术时间', value: 'a'}, {lab: '预计失血量', value: 'b'}, {lab: '手术关键点', value: 'c'}, {lab: '其它', value: 'd'}] },
+      { label: '麻醉医师陈述', _list: [{lab: '麻醉关注点', value: 'a'}, {lab: '其它', value: 'b'}] }
+    ]
+    // 设置value的作用是保存用户选择状态值
+    for (let i in this.checkboxList) {
+      this.$set(this.checkboxList[i], 'value')
     }
   },
   methods: {
