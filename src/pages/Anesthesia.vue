@@ -50,7 +50,8 @@ export default {
     this.optionList = [
       { mark: '0', label: '患者姓名、性别、年龄正确' },
       { mark: '0', label: '手术方式确认' },
-      { mark: '0', label: '手术部位与标识正确' }
+      { mark: '0', label: '手术部位与标识正确' },
+      { mark: '0', label: '是否需要相关影像资料' }
     ]
     // 设置value的作用是保存用户选择状态值
     for (let i = 0; i < this.optionList.length; i++) {
@@ -58,7 +59,8 @@ export default {
     }
     this.checkboxList = [
       { label: '手术医师陈述', _list: [{lab: '预计手术时间', value: 'a'}, {lab: '预计失血量', value: 'b'}, {lab: '手术关键点', value: 'c'}, {lab: '其它', value: 'd'}] },
-      { label: '麻醉医师陈述', _list: [{lab: '麻醉关注点', value: 'a'}, {lab: '其它', value: 'b'}] }
+      { label: '麻醉医师陈述', _list: [{lab: '麻醉关注点', value: 'a'}, {lab: '其它', value: 'b'}] },
+      { label: '手术护士陈述', _list: [{lab: '物品灭菌合格', value: 'a'}, {lab: '仪器设备完好', value: 'b'}, {lab: '术前术中特殊用药情况', value: 'c'}, {lab: '其它', value: 'd'}] }
     ]
     // 设置value的作用是保存用户选择状态值
     for (let i in this.checkboxList) {

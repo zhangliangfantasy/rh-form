@@ -1,6 +1,12 @@
 <template>
   <div class="options">
+    <!--单选框-->
     <Options :list="optionList"></Options>
+    <!--输入框-->
+    <div class="text">
+      <van-field label-class="text-input" v-model="txt" rows="1" label="其它" type="textarea" autosize placeholder="请输入" :colon="true" input-align="right" />
+      <div style="height: 100px; width: 100%"></div>
+    </div>
     <!--提交bar-->
     <Submit-bar @_submit="submit()"></Submit-bar>
     <!--弹框组件-->
@@ -22,6 +28,7 @@ export default {
   data () {
     return {
       optionList: [],
+      txt: '',
       message: '提交后，访视不可再修改'
     }
   },
@@ -72,5 +79,20 @@ export default {
   @import '../assets/styles/mixin.styl'
   .options
     width: 100%
-    height 100%
+    height 150%
+    .text
+      margin pxToRem(40px)
+      margin-right pxToRem(50px)
+    .text >>> .van-cell
+      padding 0px
+      line-height pxToRem(50px)
+      font-size pxToRem(30px)
+      font-weight 400;
+    .text >>> .text-input
+      font-family PingFang SC
+      font-size pxToRem(30px)
+      font-weight 400;
+      line-height pxToRem(50px)
+      color rgba(51,51,51,1)
+      vertical-align center
 </style>

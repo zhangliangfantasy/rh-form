@@ -1,16 +1,16 @@
 <template>
-    <div class="options clearfix">
+    <div class="options">
       <form>
         <div v-for="(item, index) in list" :key="index" class="options-item">
           <label>{{item.label}}：</label>
           <div class="options-input">
             <van-radio-group v-model="item.value" direction="horizontal" v-if="item.mark == '0'">
-              <van-radio name="1" checked-color="#00CC99">是</van-radio>
-              <van-radio name="2" checked-color="#00CC99">否</van-radio>
+              <van-radio name="1" checked-color="#009393">是</van-radio>
+              <van-radio name="2" checked-color="#009393">否</van-radio>
             </van-radio-group>
             <van-radio-group v-model="item.value" direction="horizontal" v-if="item.mark == '1'">
-              <van-radio name="1" checked-color="#00CC99">有</van-radio>
-              <van-radio name="2" checked-color="#00CC99">无</van-radio>
+              <van-radio name="1" checked-color="#009393">有</van-radio>
+              <van-radio name="2" checked-color="#009393">无</van-radio>
             </van-radio-group>
           </div>
         </div>
@@ -43,9 +43,9 @@ export default {
     font-family:PingFang SC;
     font-weight: 400;
     color:rgba(51,51,51,1);
-    line-height: pxToRem(27px);
+    line-height: pxToRem(50px);
     .options-item
-      margin: pxToRem(40px)
+      margin: pxToRem(56px) pxToRem(30px) pxToRem(56px) pxToRem(40px)
     .options-input
       display: inline-block;
       float: right;
