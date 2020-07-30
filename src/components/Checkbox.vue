@@ -5,7 +5,7 @@
         <label>{{item.label}}：</label>
           <van-checkbox-group v-model="item.value">
             <div v-for="(_item, _index) in item._list" :key="_index" class="checkbox-input">
-              <van-checkbox :name="_item.value" shape="square" checked-color="#009393">{{_item.lab}}</van-checkbox>
+              <van-checkbox :name="_item.value" shape="square" checked-color="#20B2AA">{{_item.lab}}</van-checkbox>
             </div>
           </van-checkbox-group>
       </div>

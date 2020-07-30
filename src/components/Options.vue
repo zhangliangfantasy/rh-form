@@ -1,16 +1,16 @@
 <template>
-    <div class="options">
+    <div class="options clearfix">
       <form>
         <div v-for="(item, index) in list" :key="index" class="options-item">
           <label>{{item.label}}：</label>
           <div class="options-input">
             <van-radio-group v-model="item.value" direction="horizontal" v-if="item.mark == '0'">
-              <van-radio name="1" checked-color="#009393">是</van-radio>
-              <van-radio name="2" checked-color="#009393">否</van-radio>
+              <van-radio name="1" checked-color="#20B2AA">是</van-radio>
+              <van-radio name="2" checked-color="#20B2AA">否</van-radio>
             </van-radio-group>
             <van-radio-group v-model="item.value" direction="horizontal" v-if="item.mark == '1'">
-              <van-radio name="1" checked-color="#009393">有</van-radio>
-              <van-radio name="2" checked-color="#009393">无</van-radio>
+              <van-radio name="1" checked-color="#20B2AA">有</van-radio>
+              <van-radio name="2" checked-color="#20B2AA">无</van-radio>
             </van-radio-group>
           </div>
         </div>
