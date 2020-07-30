@@ -3,20 +3,14 @@
     <div class="options-input">
       <!--单选框-->
       <Options :list="optionList"></Options>
-      <!--输入框-->
-      <div class="text">
-        <van-field
-          label-class="text-input"
-          v-model="txt"
-          rows="1"
-          label="其它"
-          type="textarea"
-          autosize
-          placeholder="请输入"
-          :colon="true"
-          input-align="right" />
-      </div>
+      <!--其它输入框-->
+      <Field ref="field" :label="label" :textInput="textInput"></Field>
     </div>
+    <!--签名输入框-->
+    <div class="options-sign">
+      <Field ref="fieldSign" :label="lab" :labelWidth="labelWidth" :textInput="textInputBlod"></Field>
+    </div>
+    <!--将底部页面撑开-->
     <div class="options-bottom"></div>
     <!--提交bar-->
     <Submit-bar @_submit="submit()"></Submit-bar>
@@ -29,21 +23,36 @@
 import Options from '@/components/Options'
 import Dialog from '@/components/Dialog'
 import SubmitBar from '@/components/SubmitBar'
+import Field from '@/components/Field'
 export default {
   name: 'Start',
   components: {
     Options,
     Dialog,
-    SubmitBar
+    SubmitBar,
+    Field
   },
   data () {
     return {
-      optionList: [],
-      txt: '',
-      message: '提交后，访视不可再修改'
+      label: '其它', // 其它便签
+      optionList: [], // 单选项信息
+      labelWidth: '9em', // 左侧label宽度
+      textInput: 'text-input', // 输入框样式
+      lab: '手术医师签名', // 手术医师签名框标签
+      textInputBlod: 'text-input-blod', // 输入框样式
+      message: '提交后，访视不可再修改' // 弹框提示信息
     }
   },
-  computed: {},
+  computed: {
+    // 响应其它输入框的变化
+    textOther: function () {
+      return this.$refs.field.text
+    },
+    // 响应签名输入框的变化
+    textSign: function () {
+      return this.$refs.fieldSign.text
+    }
+  },
   mounted () {
     // mark的作用是判断单选框后面是“是/否”还是“有无”
     this.optionList = [
@@ -72,7 +81,22 @@ export default {
   methods: {
     // 提交
     submit () {
+      // 打开弹框
       this.$refs.log.openDialog()
+      // 判断单选框是否所有选项都选上
+      let isOption = this.verify(this.optionList)
+      if (!isOption || !this.textOther || !this.textSign) {
+        this.message = '部分选项未填写完整，提交后，访视不可再修改'
+      } else {
+        this.message = '提交后，访视不可再修改'
+      }
+    },
+    // 判断单选框是否都选上
+    verify (list) {
+      let bool = this.optionList.every(item => {
+        return item.value
+      })
+      return bool
     },
     // 关闭下拉框
     cancel () {
@@ -91,27 +115,14 @@ export default {
   .options
     width: 100%
     height 100%
-    background red
+    background AliceBlue
     .options-input
       width 100%
-    .text
-      margin 0px pxToRem(50px) pxToRem(23px) pxToRem(40px)
-    .text >>> .van-cell
-      padding 0px
-      font-family PingFang SC
-      line-height pxToRem(50px)
-      font-size pxToRem(30px)
-      font-weight 400;
-    .text >>> .van-cell::after {
-      border: 0px
-    }
-    .text >>> .text-input
-      font-family PingFang SC
-      font-size pxToRem(30px)
-      font-weight 400;
-      line-height pxToRem(50px)
-      color rgba(51,51,51,1)
+    .options-sign
+      padding pxToRem(23px) 0px 0px 0px
+      background:rgba(255,255,255,1)
+      margin-top pxToRem(11px)
     .options-bottom
       width 100%
-      height pxToRem(200px)
+      height pxToRem(164px)
 </style>
