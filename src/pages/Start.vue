@@ -1,5 +1,17 @@
 <template>
   <div class="app-content">
+    <!--患者信息-->
+    <Patient-info></Patient-info>
+    <!--手术操作-->
+    <div class="app-content-operation clearfix">
+      <div v-for="(item, index) in operationList" :key="index" class="operation-item">
+        <Field :ref="item.field" :label="item.label" :labelWidth="item.labelWidth" :textInput="textInput"></Field>
+      </div>
+      <!-- <Field ref="field" :label="label" :textInput="textInput"></Field>
+      <Field ref="field" :label="label" :textInput="textInput"></Field>
+      <Field ref="field" :label="label" :textInput="textInput"></Field>
+      <Field ref="field" :label="label" :textInput="textInput"></Field> -->
+    </div>
     <!--单选框-->
     <Options :list="optionList"></Options>
     <!--其它输入框-->
@@ -18,6 +30,7 @@
 </template>
 
 <script>
+import PatientInfo from '@/components/PatientInfo'
 import Options from '@/components/Options'
 import Field from '@/components/Field'
 import SubmitBar from '@/components/SubmitBar'
@@ -25,6 +38,7 @@ import Dialog from '@/components/Dialog'
 export default {
   name: 'Start',
   components: {
+    PatientInfo,
     Options,
     Field,
     SubmitBar,
@@ -38,7 +52,8 @@ export default {
       textInput: 'text-input', // 输入框样式
       lab: '手术医师签名', // 手术医师签名框标签
       textInputBlod: 'text-input-blod', // 输入框样式
-      message: '提交后，访视不可再修改' // 弹框提示信息
+      message: '提交后，访视不可再修改', // 弹框提示信息
+      operationList: [] // 手术操作信息
     }
   },
   computed: {
@@ -75,6 +90,13 @@ export default {
     for (let i = 0; i < this.optionList.length; i++) {
       this.$set(this.optionList[i], 'value')
     }
+    this.operationList = [
+      { field: 'ref0', label: '麻醉方式', labelWidth: '9em' },
+      { field: 'ref1', label: '手术日期', labelWidth: '9em' },
+      { field: 'ref2', label: '术者', labelWidth: '9em' },
+      { field: 'ref3', label: '拟施手术方式', labelWidth: '9em' },
+      { field: 'ref4', label: '实施手术方式', labelWidth: '9em' }
+    ]
   },
   methods: {
     // 提交
@@ -113,9 +135,15 @@ export default {
   .app-content
     width: 100%
     height 100%
-    background AliceBlue
+    padding-top pxToRem(21px)
+    background rgb(234,238,246)
+    .app-content-operation
+      margin-top pxToRem(11px)
+      background rgba(255,255,255,1)
+      .operation-item
+        padding-top pxToRem(32px)
     .app-content-sign
-      padding pxToRem(23px) 0px 0px 0px
+      padding pxToRem(32px) 0px 0px 0px
       background:rgba(255,255,255,1)
       margin-top pxToRem(11px)
     .app-content-bottom

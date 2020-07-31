@@ -93,7 +93,7 @@ export default {
   .app-content
     width: 100%
     height 100%
-    background AliceBlue
+    background rgb(234,238,246)
     .app-content-bottom
       width 100%
       height pxToRem(164px)

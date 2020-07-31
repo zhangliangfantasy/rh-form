@@ -38,7 +38,7 @@ export default {
     line-height pxToRem(50px)
     font-size pxToRem(30px)
     font-weight 400
-    color rgba(153,153,153,1)
+    color rgba(0,0,0,1)
   .text >>> .text-input
     font-family PingFang SC
     font-size pxToRem(30px)
@@ -50,5 +50,5 @@ export default {
     font-size pxToRem(30px)
     font-weight bolder
     line-height pxToRem(50px)
-    color rgba(0,0,0,1)
+    color rgba(51,51,51,1)
 </style>

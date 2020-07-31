@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import './assets/styles/reset.css' // 初始化基础样式
 import './assets/styles/border.css' // 处理1px物理像素的问题
+import './assets/styles/border-dashed.css' // 处理1px物理像素的问题-有虚线的解决方法
 import './assets/styles/global.css' // 全局样式
 import { RadioGroup, Radio, Button, Dialog, Checkbox, CheckboxGroup, Field } from 'vant'
 
