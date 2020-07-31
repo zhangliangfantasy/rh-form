@@ -1,17 +1,15 @@
 <template>
-  <div class="options">
-    <div class="options-input">
-      <!--单选框-->
-      <Options :list="optionList"></Options>
-      <!--其它输入框-->
-      <Field ref="field" :label="label" :textInput="textInput"></Field>
-    </div>
+  <div class="app-content">
+    <!--单选框-->
+    <Options :list="optionList"></Options>
+    <!--其它输入框-->
+    <Field ref="field" :label="label" :textInput="textInput"></Field>
     <!--签名输入框-->
-    <div class="options-sign">
+    <div class="app-content-sign">
       <Field ref="fieldSign" :label="lab" :labelWidth="labelWidth" :textInput="textInputBlod"></Field>
     </div>
     <!--将底部页面撑开-->
-    <div class="options-bottom"></div>
+    <div class="app-content-bottom"></div>
     <!--提交bar-->
     <Submit-bar @_submit="submit()"></Submit-bar>
     <!--弹框组件-->
@@ -21,16 +19,16 @@
 
 <script>
 import Options from '@/components/Options'
-import Dialog from '@/components/Dialog'
-import SubmitBar from '@/components/SubmitBar'
 import Field from '@/components/Field'
+import SubmitBar from '@/components/SubmitBar'
+import Dialog from '@/components/Dialog'
 export default {
   name: 'Start',
   components: {
     Options,
-    Dialog,
+    Field,
     SubmitBar,
-    Field
+    Dialog
   },
   data () {
     return {
@@ -54,7 +52,7 @@ export default {
     }
   },
   mounted () {
-    // mark的作用是判断单选框后面是“是/否”还是“有无”
+    // mark的作用是判断单选框后面是“是/否”还是“有/无”
     this.optionList = [
       { mark: '0', label: '患者姓名、性别、年龄正确' },
       { mark: '0', label: '手术方式确认' },
@@ -112,17 +110,15 @@ export default {
 
 <style scoped lang="stylus">
   @import '../assets/styles/mixin.styl'
-  .options
+  .app-content
     width: 100%
     height 100%
     background AliceBlue
-    .options-input
-      width 100%
-    .options-sign
+    .app-content-sign
       padding pxToRem(23px) 0px 0px 0px
       background:rgba(255,255,255,1)
       margin-top pxToRem(11px)
-    .options-bottom
+    .app-content-bottom
       width 100%
       height pxToRem(164px)
 </style>

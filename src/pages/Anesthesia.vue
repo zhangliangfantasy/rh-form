@@ -1,21 +1,17 @@
 <template>
-  <div class="options">
+  <div class="app-content">
     <!--选项-->
-    <div>
-      <Options :list="optionList"></Options>
-    </div>
+    <Options :list="optionList"></Options>
     <!--多选-->
-    <!-- <div class="options-checkbox">
-      <div>手术、麻醉风险预警：</div>
-      <label>手术医师陈述：</label>
-      <van-checkbox-group v-model="result">
-        <van-checkbox name="a">预计手术时间</van-checkbox>
-        <van-checkbox name="b">预计失血量</van-checkbox>
-        <van-checkbox name="c">手术关键点</van-checkbox>
-        <van-checkbox name="d">其它</van-checkbox>
-      </van-checkbox-group>
-    </div> -->
     <Checkbox :list="checkboxList" ref="checkbox"></Checkbox>
+    <!--其它输入框-->
+    <Field ref="field" :label="label" :textInput="textInput"></Field>
+    <!--签名输入框-->
+    <div class="app-content-sign">
+      <Field ref="fieldSign" :label="lab" :labelWidth="labelWidth" :textInput="textInputBlod"></Field>
+    </div>
+    <!--将底部页面撑开-->
+    <div class="app-content-bottom"></div>
     <!--提交bar-->
     <Submit-bar @_submit="submit()"></Submit-bar>
     <!--弹框组件-->
@@ -25,23 +21,30 @@
 
 <script>
 import Options from '@/components/Options'
-import Dialog from '@/components/Dialog'
-import SubmitBar from '@/components/SubmitBar'
 import Checkbox from '@/components/Checkbox'
+import Field from '@/components/Field'
+import SubmitBar from '@/components/SubmitBar'
+import Dialog from '@/components/Dialog'
 export default {
   name: 'Anesthesia',
   components: {
     Options,
-    Dialog,
+    Checkbox,
+    Field,
     SubmitBar,
-    Checkbox
+    Dialog
   },
   data () {
     return {
-      optionList: [],
-      checkboxList: [],
-      result: [],
-      message: '提交后，访视不可再修改'
+      label: '其它', // 其它便签
+      optionList: [], // 单选项信息
+      result: [], // 多选项选择结果
+      checkboxList: [], // 多选项信息
+      labelWidth: '9em', // 左侧label宽度
+      textInput: 'text-input', // 输入框样式
+      lab: '麻醉医师签名', // 手术医师签名框标签
+      textInputBlod: 'text-input-blod', // 输入框样式
+      message: '提交后，访视不可再修改' // 弹框提示信息
     }
   },
   computed: {},
@@ -87,7 +90,15 @@ export default {
 
 <style scoped lang="stylus">
   @import '../assets/styles/mixin.styl'
-  .options
+  .app-content
     width: 100%
     height 100%
+    background AliceBlue
+    .app-content-bottom
+      width 100%
+      height pxToRem(164px)
+    .app-content-sign
+      padding pxToRem(23px) 0px 0px 0px
+      background:rgba(255,255,255,1)
+      margin-top pxToRem(11px)
 </style>

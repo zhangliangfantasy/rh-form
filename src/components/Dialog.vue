@@ -98,7 +98,7 @@ export default {
         position absolute
         top pxToRem(51px)
         left pxToRem(109px)
-        width pxToRem(320px)
+        width pxToRem(400px)
         font-size pxToRem(28px)
         line-height pxToRem(40px)
         font-weight 400

@@ -23,5 +23,9 @@ export default new Router({
       name: 'Leave',
       component: Leave
     }
-  ]
+  ],
+  // 每次路由跳转页面回到顶部
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

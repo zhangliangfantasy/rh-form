@@ -1,7 +1,7 @@
 <template>
-  <div class="checkbox">
+  <div class="checkbox clearfix">
     <form>
-      <div v-for="(item, index) in list" :key="index" class="checkbox-item">
+      <div v-for="(item, index) in list" :key="index" :class="index === 0 ? 'checkbox-item-one' : 'checkbox-item'" >
         <label>{{item.label}}：</label>
           <van-checkbox-group v-model="item.value">
             <div v-for="(_item, _index) in item._list" :key="_index" class="checkbox-input">
@@ -38,8 +38,10 @@ export default {
     font-weight: 400;
     color:rgba(51,51,51,1);
     line-height: pxToRem(27px);
+    .checkbox-item-one
+      margin 0px pxToRem(30px) pxToRem(56px) pxToRem(40px)
     .checkbox-item
-      margin: pxToRem(40px)
-      .checkbox-input
-        margin: pxToRem(20px) 0px
+      margin: pxToRem(56px) pxToRem(30px) pxToRem(56px) pxToRem(40px)
+    .checkbox-input
+      margin: pxToRem(20px) 0px
 </style>

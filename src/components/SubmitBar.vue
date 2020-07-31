@@ -1,6 +1,15 @@
 <template>
   <div class="submit-bar">
+    <router-link to="/start">
+      <van-button type="primary"></van-button>
+    </router-link>
     <van-button round type="info" block class="options-footer-button" @click="submit()">提交</van-button>
+    <router-link to="/Anesthesia">
+      <van-button type="primary"></van-button>
+    </router-link>
+    <router-link to="/Leave">
+      <van-button type="primary"></van-button>
+    </router-link>
   </div>
 </template>
 
