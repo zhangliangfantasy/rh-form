@@ -7,10 +7,6 @@
       <div v-for="(item, index) in operationList" :key="index" class="operation-item">
         <Field :ref="item.field" :label="item.label" :labelWidth="item.labelWidth" :textInput="textInput"></Field>
       </div>
-      <!-- <Field ref="field" :label="label" :textInput="textInput"></Field>
-      <Field ref="field" :label="label" :textInput="textInput"></Field>
-      <Field ref="field" :label="label" :textInput="textInput"></Field>
-      <Field ref="field" :label="label" :textInput="textInput"></Field> -->
     </div>
     <!--单选框-->
     <Options :list="optionList"></Options>
