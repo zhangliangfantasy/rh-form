@@ -1,5 +1,13 @@
 <template>
   <div class="app-content">
+    <!--患者信息-->
+    <Patient-info :patientList="patientList"></Patient-info>
+    <!--手术操作-->
+    <div class="app-content-operation clearfix">
+      <div v-for="(item, index) in operationList" :key="index" class="operation-item">
+        <Field :ref="item.field" :label="item.label" :labelWidth="item.labelWidth" :textInput="textInput"></Field>
+      </div>
+    </div>
     <!--选项-->
     <Options :list="optionList"></Options>
     <!--多选-->
@@ -20,6 +28,7 @@
 </template>
 
 <script>
+import PatientInfo from '@/components/PatientInfo'
 import Options from '@/components/Options'
 import Checkbox from '@/components/Checkbox'
 import Field from '@/components/Field'
@@ -28,6 +37,7 @@ import Dialog from '@/components/Dialog'
 export default {
   name: 'Leave',
   components: {
+    PatientInfo,
     Options,
     Checkbox,
     Field,
@@ -40,6 +50,8 @@ export default {
       optionList: [], // 单选项信息
       result: [], // 多选项选择结果
       checkboxList: [], // 多选项信息
+      patientList: [], // 患者信息列表
+      operationList: [], // 手术操作信息
       labelWidth: '9em', // 左侧label宽度
       textInput: 'text-input', // 输入框样式
       lab: '手术室护士签名', // 手术医师签名框标签
@@ -72,6 +84,18 @@ export default {
     for (let i in this.checkboxList) {
       this.$set(this.checkboxList[i], 'value')
     }
+    this.operationList = [
+      { field: 'ref0', label: '麻醉方式', labelWidth: '9em' },
+      { field: 'ref1', label: '手术日期', labelWidth: '9em' },
+      { field: 'ref2', label: '术者', labelWidth: '9em' },
+      { field: 'ref3', label: '拟施手术方式', labelWidth: '9em' },
+      { field: 'ref4', label: '实施手术方式', labelWidth: '9em' }
+    ]
+    // 患者信息列表
+    this.patientList = [
+      {label: '科室-床号', value: '外科556'},
+      {label: '病案号', value: '123456'}
+    ]
   },
   methods: {
     // 提交
@@ -97,12 +121,18 @@ export default {
   .app-content
     width: 100%
     height 100%
+    padding-top pxToRem(21px)
     background rgb(234,238,246)
+    .app-content-operation
+      margin-top pxToRem(11px)
+      background rgba(255,255,255,1)
+      .operation-item
+        padding-top pxToRem(22px)
     .app-content-bottom
       width 100%
-      height pxToRem(164px)
+      height pxToRem(65px)
     .app-content-sign
       padding pxToRem(23px) 0px 0px 0px
       background:rgba(255,255,255,1)
-      margin-top pxToRem(11px)
+      margin-top pxToRem(10px)
 </style>

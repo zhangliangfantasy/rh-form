@@ -1,7 +1,7 @@
 <template>
   <div class="app-content">
     <!--患者信息-->
-    <Patient-info></Patient-info>
+    <Patient-info :patientList="patientList"></Patient-info>
     <!--手术操作-->
     <div class="app-content-operation clearfix">
       <div v-for="(item, index) in operationList" :key="index" class="operation-item">
@@ -44,12 +44,13 @@ export default {
     return {
       label: '其它', // 其它便签
       optionList: [], // 单选项信息
+      patientList: [], // 患者信息列表
+      operationList: [], // 手术操作信息
       labelWidth: '9em', // 左侧label宽度
       textInput: 'text-input', // 输入框样式
       lab: '手术医师签名', // 手术医师签名框标签
       textInputBlod: 'text-input-blod', // 输入框样式
-      message: '提交后，访视不可再修改', // 弹框提示信息
-      operationList: [] // 手术操作信息
+      message: '提交后，访视不可再修改' // 弹框提示信息
     }
   },
   computed: {
@@ -92,6 +93,11 @@ export default {
       { field: 'ref2', label: '术者', labelWidth: '9em' },
       { field: 'ref3', label: '拟施手术方式', labelWidth: '9em' },
       { field: 'ref4', label: '实施手术方式', labelWidth: '9em' }
+    ]
+    // 患者信息列表
+    this.patientList = [
+      {label: '科室-床号', value: '外科556'},
+      {label: '病案号', value: '123456'}
     ]
   },
   methods: {
@@ -137,12 +143,12 @@ export default {
       margin-top pxToRem(11px)
       background rgba(255,255,255,1)
       .operation-item
-        padding-top pxToRem(32px)
+        padding-top pxToRem(22px)
     .app-content-sign
-      padding pxToRem(32px) 0px 0px 0px
+      padding pxToRem(22px) 0px 0px 0px
       background:rgba(255,255,255,1)
-      margin-top pxToRem(11px)
+      margin-top pxToRem(10px)
     .app-content-bottom
       width 100%
-      height pxToRem(164px)
+      height pxToRem(65px)
 </style>

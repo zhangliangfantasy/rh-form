@@ -34,14 +34,20 @@ export default {
   .checkbox
     background rgba(255,255,255,1)
     font-size: pxToRem(30px);
-    font-family:PingFang SC;
-    font-weight: 400;
     color:rgba(51,51,51,1);
     line-height: pxToRem(27px);
     .checkbox-item-one
-      margin 0px pxToRem(30px) pxToRem(56px) pxToRem(40px)
+      margin 0px pxToRem(30px) pxToRem(52px) pxToRem(40px)
     .checkbox-item
-      margin: pxToRem(56px) pxToRem(30px) pxToRem(56px) pxToRem(40px)
+      margin: pxToRem(52px) pxToRem(30px) pxToRem(56px) pxToRem(40px)
     .checkbox-input
-      margin: pxToRem(20px) 0px
+      margin: pxToRem(30px) 0px
+    .checkbox-input >>> .van-checkbox__label
+      line-height pxToRem(37px)
+    .checkbox-input >>> .van-checkbox__icon .van-icon
+      height pxToRem(37px)
+      width pxToRem(37px)
+      font-size pxToRem(30px)
+    .checkbox-input >>> .van-checkbox__icon
+      height pxToRem(37px)
 </style>

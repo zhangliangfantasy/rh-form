@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Start from '@/pages/Start'
 import Anesthesia from '@/pages/Anesthesia'
 import Leave from '@/pages/Leave'
+import PreoperationVisit from '@/pages/Preoperation-visit'
+import PostoperationVisit from '@/pages/Postoperation-Visit'
 
 Vue.use(Router)
 
@@ -22,6 +24,16 @@ export default new Router({
       path: '/leave',
       name: 'Leave',
       component: Leave
+    },
+    {
+      path: '/peroperation',
+      name: 'PreoperationVisit',
+      component: PreoperationVisit
+    },
+    {
+      path: '/postoperation',
+      name: 'PostoperationVisit',
+      component: PostoperationVisit
     }
   ],
   // 每次路由跳转页面回到顶部

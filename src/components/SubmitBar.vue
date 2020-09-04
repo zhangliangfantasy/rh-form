@@ -1,14 +1,20 @@
 <template>
   <div class="submit-bar">
     <router-link to="/start">
-      <van-button type="primary"></van-button>
+      <van-button type="primary">你</van-button>
+    </router-link>
+    <router-link to="/peroperation">
+      <van-button type="primary">点</van-button>
     </router-link>
     <van-button round type="info" block class="options-footer-button" @click="submit()">提交</van-button>
     <router-link to="/Anesthesia">
-      <van-button type="primary"></van-button>
+      <van-button type="primary">我</van-button>
     </router-link>
     <router-link to="/Leave">
-      <van-button type="primary"></van-button>
+      <van-button type="primary">试</van-button>
+    </router-link>
+    <router-link to="/postoperation">
+      <van-button type="primary">试</van-button>
     </router-link>
   </div>
 </template>
@@ -35,8 +41,6 @@ export default {
   .submit-bar
     width 100%
     height pxToRem(98px)
-    position fixed
-    bottom pxToRem(0px)
     background rgba(255,255,255,1)
     box-shadow 0px -1px pxToRem(18px) 0px rgba(117,132,137,0.53);
     display flex
@@ -45,7 +49,7 @@ export default {
     .options-footer-button
       font-size pxToRem(32px)
       font-family PingFang SC;
-      font-weight 500
+      font-weight bold
       background rgba(28,101,115,1);
       width pxToRem(320px)
       height pxToRem(72px)

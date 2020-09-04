@@ -8,13 +8,9 @@
       <span class="font-color">{{age}}</span>
     </div>
     <div class="patient-info-down">
-      <div class="down-left">
-        <label>科室-床号：</label>
-        <span class="font-color">{{deptBedNo}}</span>
-      </div>
-      <div class="down-right">
-        <label>病案号：</label>
-        <span class="font-color">{{medicalNo}}</span>
+      <div v-for="(item, index) of patientList" :key="index" class="patient-item">
+        <label>{{item.label}}：</label>
+        <span class="font-color">{{item.value}}</span>
       </div>
     </div>
   </div>
@@ -23,20 +19,21 @@
 <script>
 export default {
   name: 'PatientIfo',
+  props: {
+    patientList: Array
+  },
   data () {
     return {
-      name: '特朗普',
+      name: '刘敏红',
       gender: '女',
       age: '48',
       deptBedNo: '外科556',
-      medicalNo: '556'
+      medicalNo: '12345'
     }
   },
   computed: {},
-  mounted () {
-  },
-  methods: {
-  }
+  mounted () {},
+  methods: {}
 }
 </script>
 
@@ -44,15 +41,12 @@ export default {
   @import '../assets/styles/mixin.styl'
   .patient-info
     width 100%
-    height pxToRem(156px)
     background rgba(255,255,255,1)
     .patient-info-top
       width pxToRem(641px)
       height pxToRem(78px)
       text-align center
-      font-family PingFang SC
       font-size pxToRem(32px)
-      font-weight 400
       color rgba(51,51,51,1)
       line-height pxToRem(78px)
       margin-left pxToRem(40px)
@@ -61,25 +55,19 @@ export default {
         margin-left: pxToRem(21px);
         &::before
           position relative
-          left: pxToRem(-11px);
+          left: pxToRem(-14px);
           content: "|";
           background rgba(255,255,255,1)
     .patient-info-down
       width pxToRem(641px)
-      height pxToRem(78px)
-      margin-left pxToRem(40px)
-      font-family PingFang SC
-      font-size pxToRem(32px)
-      font-weight 400
+      padding pxToRem(22px) 0 pxToRem(13px) pxToRem(40px)
+      font-size pxToRem(28px)
       color rgba(51,51,51,1)
-      line-height pxToRem(78px)
-      .down-left
-        width 60%
-        height 100%
+      line-height pxToRem(28px)
+      .patient-item
         display inline-block
-      .down-right
-        height 100%
-        display inline-block
+        margin-bottom pxToRem(14px)
+        min-width 50%
     .font-color
       color rgba(0,0,0,1)
 </style>
