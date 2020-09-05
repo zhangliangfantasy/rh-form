@@ -4,13 +4,13 @@
       <div v-for="(item, index) in list" :key="index" :class="index === 0 ? 'options-item-one' : 'options-item'">
         <label>{{item.label}}：</label>
         <div class="options-input">
-          <van-radio-group v-model="item.value" direction="horizontal" v-if="item.mark == '0'">
-            <van-radio name="1" checked-color="#00a98d" label-position="left" >是</van-radio>
-            <van-radio name="2" checked-color="#00a98d" label-position="left">否</van-radio>
+          <van-radio-group v-model="item.value" checked-color="#00a98d" direction="horizontal" v-if="item.mark == '0'">
+            <van-radio name="1" label-position="left" >是</van-radio>
+            <van-radio name="2" label-position="left">否</van-radio>
           </van-radio-group>
-          <van-radio-group v-model="item.value" direction="horizontal" v-if="item.mark == '1'">
-            <van-radio name="1" checked-color="#00a98d" label-position="left">有</van-radio>
-            <van-radio name="2" checked-color="#00a98d" label-position="left">无</van-radio>
+          <van-radio-group v-model="item.value" checked-color="#00a98d" direction="horizontal" v-if="item.mark == '1'">
+            <van-radio name="1" label-position="left">有</van-radio>
+            <van-radio name="2" label-position="left">无</van-radio>
           </van-radio-group>
         </div>
       </div>

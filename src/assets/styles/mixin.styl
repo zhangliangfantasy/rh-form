@@ -1,3 +1,27 @@
 pxToRem(designpx)
     $rem = 100px
     return (designpx / $rem)rem
+
+.app
+    width 100%
+    min-height 100vh
+    background rgb(234,238,246)
+    display flex
+    flex-direction column
+    justify-content space-between
+    .app-content
+        width: 100%
+        padding-top pxToRem(21px)
+        background rgb(234,238,246)
+        .app-content-operation
+            margin-top pxToRem(11px)
+            background rgba(255,255,255,1)
+            .operation-item
+                padding-top pxToRem(22px)
+        .app-content-sign
+            padding pxToRem(22px) 0px 0px 0px
+            background:rgba(255,255,255,1)
+            margin-top pxToRem(10px)
+        .app-content-bottom
+            width 100%
+            min-height pxToRem(65px)

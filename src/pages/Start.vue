@@ -1,27 +1,29 @@
 <template>
-  <div class="app-content">
-    <!--患者信息-->
-    <Patient-info :patientList="patientList"></Patient-info>
-    <!--手术操作-->
-    <div class="app-content-operation clearfix">
-      <div v-for="(item, index) in operationList" :key="index" class="operation-item">
-        <Field :ref="item.field" :label="item.label" :labelWidth="item.labelWidth" :textInput="textInput"></Field>
+  <div class="app">
+    <div class="app-content">
+      <!--患者信息-->
+      <Patient-info :patientList="patientList"></Patient-info>
+      <!--手术操作-->
+      <div class="app-content-operation clearfix">
+        <div v-for="(item, index) in operationList" :key="index" class="operation-item">
+          <Field :ref="item.field" :label="item.label" :labelWidth="item.labelWidth" :textInput="textInput"></Field>
+        </div>
       </div>
+      <!--单选框-->
+      <Options :list="optionList"></Options>
+      <!--其它输入框-->
+      <Field ref="field" :label="label" :textInput="textInput"></Field>
+      <!--签名输入框-->
+      <div class="app-content-sign">
+        <Field ref="fieldSign" :label="lab" :labelWidth="labelWidth" :textInput="textInputBlod"></Field>
+      </div>
+      <!--将底部页面撑开-->
+      <div class="app-content-bottom"></div>
+      <!--弹框组件-->
+      <Dialog ref="log" :message="message" @_cancel="cancel()" @_confirm="confirm()"></Dialog>
     </div>
-    <!--单选框-->
-    <Options :list="optionList"></Options>
-    <!--其它输入框-->
-    <Field ref="field" :label="label" :textInput="textInput"></Field>
-    <!--签名输入框-->
-    <div class="app-content-sign">
-      <Field ref="fieldSign" :label="lab" :labelWidth="labelWidth" :textInput="textInputBlod"></Field>
-    </div>
-    <!--将底部页面撑开-->
-    <div class="app-content-bottom"></div>
     <!--提交bar-->
     <Submit-bar @_submit="submit()"></Submit-bar>
-    <!--弹框组件-->
-    <Dialog ref="log" :message="message" @_cancel="cancel()" @_confirm="confirm()"></Dialog>
   </div>
 </template>
 
@@ -134,21 +136,4 @@ export default {
 
 <style scoped lang="stylus">
   @import '../assets/styles/mixin.styl'
-  .app-content
-    width: 100%
-    height 100%
-    padding-top pxToRem(21px)
-    background rgb(234,238,246)
-    .app-content-operation
-      margin-top pxToRem(11px)
-      background rgba(255,255,255,1)
-      .operation-item
-        padding-top pxToRem(22px)
-    .app-content-sign
-      padding pxToRem(22px) 0px 0px 0px
-      background:rgba(255,255,255,1)
-      margin-top pxToRem(10px)
-    .app-content-bottom
-      width 100%
-      height pxToRem(65px)
 </style>

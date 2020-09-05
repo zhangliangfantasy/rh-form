@@ -48,7 +48,6 @@ export default {
     align-items center
     .options-footer-button
       font-size pxToRem(32px)
-      font-family PingFang SC;
       font-weight bold
       background rgba(28,101,115,1);
       width pxToRem(320px)
