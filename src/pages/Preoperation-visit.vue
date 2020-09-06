@@ -14,7 +14,9 @@
         <van-checkbox v-model="emergencyOperation" shape="square" label-position="left" checked-color="#00a98d">急诊手术</van-checkbox>
       </div>
       <!--术前访视-->
-      <Pre-visit></Pre-visit>
+      <div class="app-content-visit">
+        <Pre-visit></Pre-visit>
+      </div>
       <!-- 其它输入框-->
       <div class="app-content-other">
         <Field ref="field" :label="label" :textInput="textInput"></Field>
@@ -122,8 +124,8 @@ export default {
     font-size pxToRem(28px)
   .app-content-emergency >>> .van-checkbox__icon
     height pxToRem(37px)
-  .app-content-preoperation
-    font-size pxToRem(30px)
+  .app-content-visit
+    // font-size pxToRem(28px)
     line-height pxToRem(34px)
     padding pxToRem(29px) pxToRem(50px) pxToRem(21px) pxToRem(40px)
     background:rgba(255,255,255,1)
