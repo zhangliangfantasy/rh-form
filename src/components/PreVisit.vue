@@ -141,7 +141,7 @@ export default {
         .item-label
           // margin-left pxToRem(30px)
         .item-one-input
-          width 32%
+          width 48%
           height pxToRem(42px)
           padding pxToRem(5px)
           border-bottom 1px solid #D8D8D8
